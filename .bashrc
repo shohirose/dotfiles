@@ -119,5 +119,10 @@ fi
 # ==============================================================================
 # OpenFOAM settings
 # ==============================================================================
-alias fe32='source $HOME/foam/foam-extend-3.2/etc/bashrc'
+source ~/foam/foam-extend-3.2/etc/bashrc
+source ~/foam/geo32/etc/bashrc
 
+alias fe32='source $HOME/foam/foam-extend-3.2/etc/bashrc'
+alias geo='cd ~/foam/geo32/'
+alias gsrc='cd ~/foam/geo32/src'
+alias gtut='cd ~/foam/geo32/tutorials'
