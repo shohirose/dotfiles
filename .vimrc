@@ -31,6 +31,14 @@ set sidescroll=1
 set showcmd
 set cursorline
 
+set noswapfile
+set statusline=%<%f\ %m%r%h%w%{'{'.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline+=%{fugitive#statusline()}
+set title
+set browsedir=buffer
+set list
+set listchars=tab:>\ ,extends:<
+
 if &compatible
     set nocompatible
 endif
@@ -46,6 +54,8 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('Shougo/vimfiler.vim')
     call dein#add('vim-scripts/trailing-whitespace')
     call dein#add('vim-scripts/Cpp11-Syntax-Support')
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('tomtom/tcomment_vim')
     call dein#end()
     call dein#save_state()
 endif
