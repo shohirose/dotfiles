@@ -80,10 +80,23 @@ endif
 filetype plugin indent on
 syntax enable
 
+" =============================================================================
 " Key binds for GNU global
+" =============================================================================
+" Before using gtags, do 'gtags -v' under a root directory for a library, and
+" create tag files.
+"
+" Close the current search result
+nmap <C-q> <C-w><C-w><C-w>q
+" Grep in the source code
 nmap <C-g> :Gtags -g
+" List all functions in the current file
 nmap <C-l> :Gtags -f %<CR>
+" Find the definition of the cursor position
 nmap <C-j> :Gtags <C-r><C-w><CR>
+" Find where the var/func the cursor is located at is used
 nmap <C-k> :Gtags -r <C-r><C-w><CR>
+" Jump to the next search result
 nmap <C-n> :cn<CR>
+" Jump to the previous search result
 nmap <C-p> :cp<CR>
