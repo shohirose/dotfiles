@@ -18,7 +18,7 @@ fi
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-PATH="$HOME/Projects/gmsh/bin:$HOME/Projects/paraview/bin:$PATH"
+PATH="$HOME/Projects/global/bin/:$HOME/Projects/gmsh/bin:$HOME/Projects/paraview/bin:$PATH"
 
 # set PATH to shared libraries
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib"

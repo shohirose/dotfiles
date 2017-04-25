@@ -39,6 +39,19 @@ set browsedir=buffer
 set list
 set listchars=tab:>\ ,extends:<
 
+" Do not store in buffer when deleted.
+nnoremap x "_x
+nnoremap dd "_dd
+
+" Character code
+set encoding=utf-8
+
+" Yanks go into clipboard
+set clipboard+=unnamed
+
+" Can select a block beyond eof in visual mode.
+set virtualedit+=block
+
 if &compatible
     set nocompatible
 endif
@@ -66,3 +79,11 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+" Key binds for GNU global
+nmap <C-g> :Gtags -g
+nmap <C-l> :Gtags -f %<CR>
+nmap <C-j> :Gtags <C-r><C-w><CR>
+nmap <C-k> :Gtags -r <C-r><C-w><CR>
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
