@@ -20,7 +20,7 @@ set wildmenu wildmode=list:longest,full
 set number
 set wrap
 " set textwidth=80
-set colorcolumn=81
+set colorcolumn=80
 set hlsearch
 set ruler
 set cmdheight=2
@@ -52,6 +52,12 @@ set clipboard+=unnamed
 " Can select a block beyond eof in visual mode.
 set virtualedit+=block
 
+" =============================================================================
+" Display color settings
+" =============================================================================
+":hi Comment ctermfg=Cyan
+
+
 if &compatible
     set nocompatible
 endif
@@ -60,6 +66,7 @@ set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
 if dein#load_state('~/.vim/repos/github.com/')
     call dein#begin('~/.vim/repos/github.com/')
     call dein#add('Shougo/dein.vim')
+    call dein#add('Shougo/unite.vim')
     call dein#add('Shougo/neocomplete.vim')
     call dein#add('nathanaelkane/vim-indent-guides')
     call dein#add('vim-scripts/Align')
@@ -69,6 +76,8 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('vim-scripts/Cpp11-Syntax-Support')
     call dein#add('tpope/vim-fugitive')
     call dein#add('tomtom/tcomment_vim')
+    call dein#add('nanotech/jellybeans.vim')
+    call dein#add('tomasr/molokai')
     call dein#end()
     call dein#save_state()
 endif
@@ -79,6 +88,8 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+:colorscheme evening
 
 " =============================================================================
 " Key binds for GNU global
