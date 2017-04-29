@@ -70,14 +70,21 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('Shougo/neocomplete.vim')
     call dein#add('nathanaelkane/vim-indent-guides')
     call dein#add('vim-scripts/Align')
+    " Replace double quote with single quote, etc...
     call dein#add('vim-scripts/surround.vim')
     call dein#add('Shougo/vimfiler.vim')
     call dein#add('vim-scripts/trailing-whitespace')
     call dein#add('vim-scripts/Cpp11-Syntax-Support')
+    " Execute git from vim
     call dein#add('tpope/vim-fugitive')
+    " Comment out
     call dein#add('tomtom/tcomment_vim')
     call dein#add('nanotech/jellybeans.vim')
     call dein#add('tomasr/molokai')
+    " Automatically insert the end of block
+    call dein#add('tpope/vim-endwise')
+    " Text manipulation (move, duplicate, ...)
+    " call dein#add('t9md/vim-textmanip')
     call dein#end()
     call dein#save_state()
 endif
@@ -89,14 +96,25 @@ endif
 filetype plugin indent on
 syntax enable
 
-:colorscheme evening
+" =============================================================================
+"                                   Colorscheme
+" =============================================================================
+" Installed in vim7 as default:
+" - blue, darkblue, default, delek, desert, elford, evening, koehler,
+"   morning, murphy, pablo, peachpuff, ron, shine, slate, torte, zellner
+" Preferred settings:
+" - deseert for remote connection
+" =============================================================================
+:colorscheme desert
 
 " =============================================================================
-" Key binds for GNU global
+"                             Key binds for GNU global
 " =============================================================================
 " Before using gtags, do 'gtags -v' under a root directory for a library, and
 " create tag files.
-"
+" It is recommended to add GTAGS, GRTAGS, and GPATHS to .gitignore
+" =============================================================================
+
 " Close the current search result
 nmap <C-q> <C-w><C-w><C-w>q
 " Grep in the source code
@@ -111,3 +129,28 @@ nmap <C-k> :Gtags -r <C-r><C-w><CR>
 nmap <C-n> :cn<CR>
 " Jump to the previous search result
 nmap <C-p> :cp<CR>
+
+" =============================================================================
+"                             Key binds for tComment
+" =============================================================================
+" <C-_><C-_>: comment out the selected part
+" <C-_>n    : comment out with selected ft
+" <C-_>s    : comment out with specified format
+" <C-_>p    : comment out the whole block
+" gcc       : = <C-_><C-_>
+
+" Add comment styles to tComment
+if !exists('g:tcomment_types')
+    let g:tcomment_types = {}
+endif
+let g:tcomment_types = {
+    \'cpp' : "// %s",
+\}
+
+" Add mapping
+function! SetCppMapping()
+    nmap <buffer> <C-_>c :TCommentAs cpp<CR>
+    vmap <buffer> <C-_>c :TCommentAs cpp<CR>
+endfunction
+
+
