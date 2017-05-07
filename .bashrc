@@ -128,3 +128,8 @@ alias gsrc='cd $HOME/foam/geo32/src'
 alias gtut='cd $HOME/foam/geo32/tutorials'
 alias fedebug='export WM_COMPILE_OPTION=Debug; source $HOME/.profile'
 alias feopt='export WM_COMPILE_OPTION=Opt; source $HOME/.profile'
+
+# ==============================================================================
+# Terminal settings
+# ==============================================================================
+eval `dircolors $HOME/.dir_colors -b`
