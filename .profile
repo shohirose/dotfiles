@@ -21,6 +21,3 @@ PATH="$HOME/bin:$HOME/.local/bin:$HOME/Projects/global/bin/:$HOME/Projects/gmsh/
 
 # set PATH to shared libraries
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib"
-
-# source .bashrc
-source $HOME/.bashrc
