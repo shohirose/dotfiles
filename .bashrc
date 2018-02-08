@@ -141,3 +141,9 @@ COLUMNS=80
 ROWS=100
 resize -s ROWS COLUMNS > /dev/null
 
+# Replace rm command with trash-put
+# Download trash-cli from github
+if type trash-put &> /dev/null
+then
+    alias rm=trash-put
+fi
