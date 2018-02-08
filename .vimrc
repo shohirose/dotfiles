@@ -57,6 +57,18 @@ set virtualedit+=block
 " =============================================================================
 ":hi Comment ctermfg=Cyan
 
+" Check if dein.vim is already installed
+let dein_dir = $HOME . "/.vim/repos/github.com/Shougo/dein.vim"
+
+if !isdirectory(dein_dir)
+    let dein_url = "https://github.com/Shougo/dein.vim.git"
+    echo printf("dein.vim not installed under %s", dein_dir)
+    echo printf("Please run the following commands:"
+    echo "curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh"
+    echo "sh ./installer.sh ~/.vim"
+    " Stop running script
+    finish
+endif
 
 if &compatible
     set nocompatible
