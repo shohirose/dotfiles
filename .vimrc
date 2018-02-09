@@ -153,4 +153,5 @@ function! SetCppMapping()
     vmap <buffer> <C-_>c :TCommentAs cpp<CR>
 endfunction
 
-
+" Automatically open Quickfix-window after vimgrep
+autocmd QuickFixCmdPost *grep* cwindow
