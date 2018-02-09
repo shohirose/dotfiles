@@ -47,7 +47,7 @@ nnoremap dd "_dd
 set encoding=utf-8
 
 " Yanks go into clipboard
-" set clipboard+=unnamed
+set clipboard+=unnamed,autoselect
 
 " Can select a block beyond eof in visual mode.
 set virtualedit+=block
