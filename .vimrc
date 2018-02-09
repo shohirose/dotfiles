@@ -97,6 +97,7 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('tpope/vim-endwise')
     " Text manipulation (move, duplicate, ...)
     " call dein#add('t9md/vim-textmanip')
+    call dein#add('vim-bracketed-paste')
     call dein#end()
     call dein#save_state()
 endif
