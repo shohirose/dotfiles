@@ -33,7 +33,7 @@ set cursorline
 
 set noswapfile
 set statusline=%<%f\ %m%r%h%w%{'{'.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set statusline+=%{fugitive#statusline()}
+" set statusline+=%{fugitive#statusline()}
 set title
 set browsedir=buffer
 set list
