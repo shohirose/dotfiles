@@ -88,22 +88,14 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
+if [ "$OS" == "linux" ]; then
+    alias ls='ls --color=auto' GREP_COLOR='1;32'
+    export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rb=90'
+fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -119,27 +111,23 @@ fi
 # ==============================================================================
 # OpenFOAM settings
 # ==============================================================================
-source $HOME/foam/foam-extend-3.2/etc/bashrc
-source $HOME/foam/geo32/etc/bashrc
+# source $HOME/foam/foam-extend-3.2/etc/bashrc
+# source $HOME/foam/geo32/etc/bashrc
 
-alias fe32='source $HOME/foam/foam-extend-3.2/etc/bashrc'
-alias geo='cd $HOME/foam/geo32/'
-alias gsrc='cd $HOME/foam/geo32/src'
-alias gtut='cd $HOME/foam/geo32/tutorials'
-alias fedebug='export WM_COMPILE_OPTION=Debug; source $HOME/.profile'
-alias feopt='export WM_COMPILE_OPTION=Opt; source $HOME/.profile'
+# alias fe32='source $HOME/foam/foam-extend-3.2/etc/bashrc'
+# alias geo='cd $HOME/foam/geo32/'
+# alias gsrc='cd $HOME/foam/geo32/src'
+# alias gtut='cd $HOME/foam/geo32/tutorials'
+# alias fedebug='export WM_COMPILE_OPTION=Debug; source $HOME/.profile'
+# alias feopt='export WM_COMPILE_OPTION=Opt; source $HOME/.profile'
 
 # ==============================================================================
 # Terminal settings
 # ==============================================================================
 
 # Set directory colors for ls command
-eval `dircolors $HOME/.dir_colors -b`
+# eval `dircolors $HOME/.dir_colors -b`
 
-# Set terminal size
-COLUMNS=80
-ROWS=100
-resize -s ROWS COLUMNS > /dev/null
 
 # Replace rm command with trash-put
 # Download trash-cli from github
@@ -147,3 +135,39 @@ if type trash-put &> /dev/null
 then
     alias rm=trash-put
 fi
+
+# Set Paths
+# For .pc files
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/include/googletest/build
+export PKG_CONFIG_PATH
+
+# Alias
+alias ll='ls -l'
+alias lla='ls -la'
+# Set terminal size
+COLS=80
+ROWS=100
+alias rs='resize -s $ROWS $COLS > /dev/null'
+
+# Setup some colors to use later in interactive shell or scripts
+export COLOR_NC='\033[0m' # No Color
+export COLOR_WHITE='\033[1;37m'
+export COLOR_BLACK='\033[0;30m'
+export COLOR_BLUE='\033[0;34m'
+export COLOR_LIGHT_BLUE='\033[1;34m'
+export COLOR_GREEN='\033[0;32m'
+export COLOR_LIGHT_GREEN='\033[1;32m'
+export COLOR_CYAN='\033[0;36m'
+export COLOR_LIGHT_CYAN='\033[1;36m'
+export COLOR_RED='\033[0;31m'
+export COLOR_LIGHT_RED='\033[1;31m'
+export COLOR_PURPLE='\033[0;35m'
+export COLOR_LIGHT_PURPLE='\033[1;35m'
+export COLOR_BROWN='\033[0;33m'
+export COLOR_YELLOW='\033[1;33m'
+export COLOR_GRAY='\033[1;30m'
+export COLOR_LIGHT_GRAY='\033[0;37m'
+alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
+
+alias untar="tar -zxvf"
+
