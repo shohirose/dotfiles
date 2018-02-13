@@ -90,7 +90,7 @@ fi
 # some more ls aliases
 if [ "$OS" == "linux" ]; then
     alias ls='ls --color=auto' GREP_COLOR='1;32'
-    export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rb=90'
+#    export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rb=90'
 fi
 alias ll='ls -alF'
 alias la='ls -A'
@@ -171,3 +171,6 @@ alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
 alias untar="tar -zxvf"
 
+
+# added by Anaconda3 installer
+export PATH="/home/sho/anaconda3/bin:$PATH"
