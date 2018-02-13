@@ -214,13 +214,15 @@ let g:NERDTrimTrailingWhitespace = 1
 " go to the leftest charactre, not space
 noremap <S-h> ^
 " go to the rightest
-noremap <S-h> $
+noremap <S-l> $
 " go to
 noremap <S-j> }
 " go to
 noremap <S-k> {
-" change line
+" change line in normal mode
 noremap <CR> A<CR><ESC>
+" merge lines into one
+noremap <BS> I<CR><ESC>
 " undo in the same way as windows
 noremap <CR>z u
 " page up/down, note move cursor at the middle is <S-m>
@@ -231,4 +233,3 @@ noremap <S-b> <C-b>
 " =: indent
 " G: go to the end of the file
 noremap == gg=G''
-
