@@ -98,6 +98,8 @@ if dein#load_state('~/.vim/repos/github.com/')
     " Text manipulation (move, duplicate, ...)
     " call dein#add('t9md/vim-textmanip')
     call dein#add('ConradIrwin/vim-bracketed-paste')
+    call dein#add('vim-syntastic/syntastic')
+    call dein#add('scrooloose/nerdcommenter')
     call dein#end()
     call dein#save_state()
 endif
