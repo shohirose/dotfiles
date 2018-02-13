@@ -18,7 +18,7 @@ set wildmenu wildmode=list:longest,full
 
 " Display settings
 set number
-set wrap
+" set wrap
 " set textwidth=80
 set colorcolumn=80
 set hlsearch
