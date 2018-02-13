@@ -120,7 +120,7 @@ syntax enable
 " Preferred settings:
 " - deseert for remote connection
 " =============================================================================
-:colorscheme desert
+:colorscheme molokai
 
 " =============================================================================
 "                             Key binds for GNU global
