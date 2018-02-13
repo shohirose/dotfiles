@@ -170,3 +170,65 @@ endfunction
 
 " Automatically open Quickfix-window after vimgrep
 autocmd QuickFixCmdPost *grep* cwindow
+
+"------------------------------------------------------------------------------
+" Recommended settings for vim-syntastic for begginers
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"------------------------------------------------------------------------------
+" NERD Commenter
+" filetype plugin on
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+
+" --------------------------------------------------------------------------
+"  Key bindings
+"  <BS> Backspace, <Tab> Tab, <CR/Enter/Return> Enter, <Esc> Escape, <Space>
+"  Space, <Up/Down/Left/Right> Up/Down/Left/Right arrows, <F1>-<F12> or <#1>-<#9>,<#0> Function keys, <Insert> Insert, <Del> Delete, <Home> Home, <End> End, <PageUp>, <PageDown>, <bar> '|' character
+" go to the leftest charactre, not space
+noremap <S-h> ^
+" go to the rightest
+noremap <S-h> $
+" go to
+noremap <S-j> }
+" go to
+noremap <S-k> {
+" change line
+noremap <CR> A<CR><ESC>
+" undo in the same way as windows
+noremap <CR>z u
+" page up/down, note move cursor at the middle is <S-m>
+noremap <S-f> <C-f>
+noremap <S-b> <C-b>
+" indent all of the file and return back to the original position
+" gg: go back to the begging of the file
+" =: indent
+" G: go to the end of the file
+noremap == gg=G''
+
