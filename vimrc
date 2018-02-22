@@ -209,8 +209,21 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " --------------------------------------------------------------------------
 "  Key bindings
-"  <BS> Backspace, <Tab> Tab, <CR/Enter/Return> Enter, <Esc> Escape, <Space>
-"  Space, <Up/Down/Left/Right> Up/Down/Left/Right arrows, <F1>-<F12> or <#1>-<#9>,<#0> Function keys, <Insert> Insert, <Del> Delete, <Home> Home, <End> End, <PageUp>, <PageDown>, <bar> '|' character
+"  <BS> Backspace
+"  <Tab> Tab
+"  <CR/Enter/Return> Enter
+"  <Esc> Escape
+"  <S> Shift
+"  <Space> Space
+"  <Up/Down/Left/Right> Up/Down/Left/Right arrows
+"  <F1>-<F12> or <#1>-<#9>,<#0> Function keys
+"  <Insert> Insert
+"  <Del> Delete
+"  <Home> Home
+"  <End> End
+"  <PageUp>
+"  <PageDown>
+"  <bar> '|' character
 " go to the leftest charactre, not space
 noremap <S-h> ^
 " go to the rightest
@@ -219,6 +232,8 @@ noremap <S-l> $
 noremap <S-j> }
 " go to
 noremap <S-k> {
+" Combine two lines removing spaces
+noremap - <S-j>
 " change line in normal mode
 noremap <CR> A<CR><ESC>
 " merge lines into one
