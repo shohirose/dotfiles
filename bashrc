@@ -136,6 +136,20 @@ then
     alias rm=trash-put
 fi
 
+# Set TMP/TMPDIR
+if [ ! "$TMP" ]; then
+    :
+elif [ "$TEMP" ]; then
+    export TMP=$TEMP
+elif [ -w /tmp ]; then
+    export TMP=/tmp
+elif [ ~/.tmp ]; then
+    export TMP=~/.tmp
+else
+    mkdir -p ~/.tmp
+    export TMP=~/.tmp
+fi
+
 # Set Paths
 # For .pc files
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/include/googletest/build
