@@ -11,7 +11,7 @@ if [ "$(hostname)" == "kashima" ]; then
 fi
 # UT pc
 if [ "$(hostname)" == "muse" ]; then
-    PATH="$HOME/bin:$HOME/.local/bin:$HOME/Projects/global/bin/:$HOME/Projects/gmsh/bin:$HOME/Projects/paraview/bin:$HOME/Projects/MATLAB/R2017a/bin:$PATH"
+    PATH="$HOME/.local/src/minos-static/bin:$HOME/bin:$HOME/.local/bin:$HOME/Projects/global/bin/:$HOME/Projects/gmsh/bin:$HOME/Projects/paraview/bin:$HOME/Projects/MATLAB/R2017a/bin:$PATH"
 fi
 
 # set PATH to shared libraries
