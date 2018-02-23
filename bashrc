@@ -190,10 +190,13 @@ alias untar="tar -zxvf"
 export PATH="/home/sho/anaconda3/bin:$PATH"
 
 # Powerline Shell settings
-function _update_ps1() {
-    PS1="$(~/.local/bin/powerline-shell $?)"
-}
+result=$(pip list --format=columns | grep powerline-shell)
+if [ -n "$result" ]; then
+    function _update_ps1() {
+        PS1="$(~/.local/bin/powerline-shell $?)"
+    }
 
-if [[ "$TERM" != "linux" && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+    if [[ "$TERM" != "linux" && ! [$PROMPT_COMMAND =~ _update_ps1 ]]; then
+        PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+    fi
 fi
