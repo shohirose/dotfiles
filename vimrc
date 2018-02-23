@@ -100,6 +100,7 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('ConradIrwin/vim-bracketed-paste')
     call dein#add('vim-syntastic/syntastic')
     call dein#add('scrooloose/nerdcommenter')
+    call dein#add('kannokanno/previm')
     call dein#end()
     call dein#save_state()
 endif
@@ -170,6 +171,13 @@ endfunction
 
 " Automatically open Quickfix-window after vimgrep
 autocmd QuickFixCmdPost *grep* cwindow
+
+" For previm
+let g:previm_open_cmd = 'open -a Firefox'
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
 "------------------------------------------------------------------------------
 " Recommended settings for vim-syntastic for begginers
