@@ -145,7 +145,7 @@ export PKG_CONFIG_PATH
 alias ll='ls -l'
 alias lla='ls -la'
 # Set terminal size
-COLS=80
+COLS=85
 ROWS=100
 alias rs='resize -s $ROWS $COLS > /dev/null'
 
@@ -174,3 +174,12 @@ alias untar="tar -zxvf"
 
 # added by Anaconda3 installer
 export PATH="/home/sho/anaconda3/bin:$PATH"
+
+# Powerline Shell settings
+function _update_ps1() {
+    PS1="$(~/.local/bin/powerline-shell $?)"
+}
+
+if [[ "$TERM" != "linux" && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
