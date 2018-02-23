@@ -7,7 +7,7 @@ export PLATFORM="$MACHINE-$OS-$OSVERSION"
 # set PATH
 # home pc
 if [ "$(hostname)" == "kashima" ]; then
-    PATH="$PATH"
+    PATH="$HOME/.local/bin:$PATH"
 fi
 # UT pc
 if [ "$(hostname)" == "muse" ]; then
