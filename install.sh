@@ -2,7 +2,8 @@
 
 # set -e
 #
-# unset tmp
+
+unset tmp
 
 atexit () {
     [ -n ${tmp-} ] && rm -rf "$tmp"
@@ -11,7 +12,9 @@ atexit () {
 trap 'atexit; exit 1' SIGINT
 
 # Set local dir
-LOCAL_DIR=$HOME/.local
+LOCAL_DIR="${HOME}/.local"
+SRC_DIR="${LOCAL_DIR}/src"
+MINOS_DIR="${SRC_DIR}/minos-static"
 
 # Create temp directory
 tmp=$(mktemp -d ./tmp.XXXXXXXX)
@@ -57,71 +60,7 @@ else
         make && \
         make install \
     )
-    # Create a file containing path to pkg-config under aclocal
-    file="${LOCAL_DIR}/share/aclocal/dirlist"
-    touch $file
-    echo "$(which pkg-config)/share/aclocal" >> $file
 fi
-
-# echo ""
-# echo "========================================================================"
-# echo "checking libevent"
-# result=$(find ${LOCAL_DIR}/bin -name "event_rpcgen.py")
-# if [ -n "$result" ]; then
-#     echo "libevent is already installed"
-# else
-#     echo "libevent not found"
-#     echo "installing libevent"
-#     (\
-#         cd $tmp; \
-#         wget https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
-#         tar -zxvf libevent-2.1.8-stable.tar.gz && \
-#         cd libevent-2.1.8-stable && \
-#         ./configure --prefix=${LOCAL_DIR} --disable-static && \
-#         make && \
-#         make install \
-#     )
-# fi
-#
-# echo ""
-# echo "========================================================================"
-# echo "checking libgpg-error"
-# result="$(which gpg-error)"
-# if [ -n "$result" ]; then
-#     echo "libgpg-error is already installed"
-# else
-#     echo "libgpg-error not found"
-#     echo "installing libgpg-error"
-#     (\
-#         cd $tmp; \
-#         wget https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.27.tar.bz2
-#         tar -xvf libgpg-error-1.27.tar.bz2 && \
-#         cd libgpg-error-1.27 && \
-#         ./configure --prefix=${LOCAL_DIR} && \
-#         make && \
-#         make install \
-#     )
-# fi
-# echo ""
-#
-# echo "========================================================================"
-# echo "checking libgcrypt"
-# result="$(which libgcrypt-config)"
-# if [ -n "$result" ]; then
-#     echo "libgcrypt is already installed"
-# else
-#     echo "libgcrypt not found"
-#     echo "installing libgcrypt"
-#     (\
-#         cd $tmp; \
-#         wget https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.2.tar.bz2
-#         tar -xvf libgcrypt-1.8.2.tar.bz2 && \
-#         cd libgcrypt-1.8.2 && \
-#         ./configure --prefix=${LOCAL_DIR} && \
-#         make && \
-#         make install \
-#     )
-# fi
 
 # Check if powerline-shell is installed
 echo ""
@@ -143,36 +82,39 @@ else
         cd fonts && \
         ./install.sh \
     )
-    echo "please change terminal font setting from [edit]>[profile setting]>[specifying font]"
+    echo "please change terminal font setting from [Edit] > [Profile Preferences] > [Custom font]"
     echo "e.g. Ubuntu Mono derivative Powerline Regular"
 fi
 
+# Check if minos-static is installed
+# This is for installing tmux
 echo ""
 echo "========================================================================"
 echo "checking minos-static"
-if [ -d "${LOCAL_DIR}/src/minos-static" ]; then
-    echo "minos-static is already installed"
+if [ -d "$MINOS_DIR" ]; then
+    echo "minos-static is already installed at $MINOS_DIR"
 else
     echo "minos-static not found"
     echo "downloading minos-static..."
-    cd $HOME/.local/src
+    cd $SRC_DIR
     git clone https://github.com/minos-org/minos-static.git
-    MINOS_DIR=${LOCAD_DIR}/src/minos-static
-    echo "please add $MINOS_DIR to PATH and source it"
+    export PATH="${MINOS_DIR}/bin:$PATH"
+    echo "please add ${MINOS_DIR}/bin to PATH in bashrc or basrh_profile"
 fi
 
 # Check if tmux is installed
-# echo ""
-# echo "========================================================================"
-# echo "checking tmux"
-# result=$(which tmux)
-# if [ -n "$result" ]; then
-#     echo "tmux is already installed"
-# else
-#     echo "tmux not found"
-#     echo "installing tmux using minos-static..."
-#     cd $MINOS_DIR
-#     tar xvf tmux-1.9a.tar.xz
-# fi
+echo ""
+echo "========================================================================"
+echo "checking tmux"
+result=$(which tmux)
+if [ -n "$result" ]; then
+    echo "tmux is already installed"
+else
+    echo "tmux not found"
+    echo "installing tmux using minos-static..."
+    cd $MINOS_DIR
+    ./static-get tmux
+    tar xvf tmux-1.9a.tar.xz
+fi
 
 atexit
