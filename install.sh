@@ -75,7 +75,6 @@ else
     # pip install --user git+git://github.com/powerline/powerline
     pip install --user powerline-shell
     echo "installing powerline fonts..."
-    tmp=$(mktemp -d ./tmp.XXXXXXXX)
     (\
         cd $tmp; \
         git clone https://github.com/powerline/fonts.git --depth=1 && \
