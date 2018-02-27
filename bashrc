@@ -128,26 +128,11 @@ fi
 # Set directory colors for ls command
 # eval `dircolors $HOME/.dir_colors -b`
 
-
 # Replace rm command with trash-put
 # Download trash-cli from github
 if type trash-put &> /dev/null
 then
     alias rm=trash-put
-fi
-
-# Set TMP/TMPDIR
-if [ ! "$TMP" ]; then
-    :
-elif [ "$TEMP" ]; then
-    export TMP=$TEMP
-elif [ -w /tmp ]; then
-    export TMP=/tmp
-elif [ ~/.tmp ]; then
-    export TMP=~/.tmp
-else
-    mkdir -p ~/.tmp
-    export TMP=~/.tmp
 fi
 
 # Set Paths
@@ -160,8 +145,9 @@ alias ll='ls -l'
 alias lla='ls -la'
 # Set terminal size
 COLS=85
-ROWS=100
+ROWS=60
 alias rs='resize -s $ROWS $COLS > /dev/null'
+rs
 
 # Setup some colors to use later in interactive shell or scripts
 export COLOR_NC='\033[0m' # No Color
@@ -184,10 +170,6 @@ export COLOR_LIGHT_GRAY='\033[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
 alias untar="tar -zxvf"
-
-
-# added by Anaconda3 installer
-export PATH="/home/sho/anaconda3/bin:$PATH"
 
 # Powerline Shell settings
 result=$(pip list --format=columns | grep powerline-shell)
