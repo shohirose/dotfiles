@@ -62,6 +62,26 @@ else
     )
 fi
 
+echo ""
+echo "========================================================================"
+echo "checking cmake"
+result=$(which cmake)
+if [ -n "$result" ]; then
+    echo "cmake is already installed"
+else
+    echo "cmake not found"
+    echo "installing cmake"
+    (\
+        cd $tmp; \
+        wget https://cmake.org/files/v3.10/cmake-3.10.2.tar.gz
+        tar -zxvf cmake-3.10.2.tar.gz && \
+        cd cmake-3.10.2 && \
+        ./configure --prefix=${LOCAL_DIR} && \
+        make && \
+        make install \
+    )
+fi
+
 # Check if powerline-shell is installed
 echo ""
 echo "========================================================================"

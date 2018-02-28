@@ -147,7 +147,6 @@ alias lla='ls -la'
 COLS=85
 ROWS=60
 alias rs='resize -s $ROWS $COLS > /dev/null'
-rs
 
 # Setup some colors to use later in interactive shell or scripts
 export COLOR_NC='\033[0m' # No Color
