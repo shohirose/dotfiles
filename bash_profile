@@ -8,18 +8,21 @@ export PLATFORM="$MACHINE-$OS-$OSVERSION"
 
 # Functions to add and remove paths
 pathadd() {
-    newelement="${1%/}"
-    if [[ -d "$1" && $(echo $PATH | grep -E -c "(^|:)$newelement($|:)") -eq 0 ]]; then
+    add_path="${1%/}"
+    if [[ -d "$1" && $(echo $PATH | grep -E -c "(^|:)$add_path($|:)") -eq 0 ]]; then
         if [ "$2" = "after" ]; then
-            PATH="${PATH}:${newelement}"
+            PATH="$PATH:$add_path"
         else
-            PATH="${newelement}:$PATH"
+            PATH="$add_path:$PATH"
         fi
     fi
 }
 
+# Remove a given path
 pathrm() {
-    PATH="$(echo $PATH | sed -e "s;\(^\|:\)${1%/}\(:\|\$\);\1\2;g" -e 's;^:\|:$;;g' -e 's;::;:;g')"
+    rm_path="${1%/}"
+    # PATH="$(echo $PATH | sed -e "s;\(^\|:\)${1%/}\(:\|\$\);\1\2;g" -e 's;^:\|:$;;g' -e 's;::;:;g')"
+    PATH="$(echo $PATH | sed -r -e "s;(^|:)$rm_path(:|$);\1\2;g" -e 's;^:|:$;;g' -e 's;::;:;g')"
 }
 
 
