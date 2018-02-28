@@ -101,6 +101,7 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('vim-syntastic/syntastic')
     call dein#add('scrooloose/nerdcommenter')
     call dein#add('kannokanno/previm')
+    call dein#add('altercation/vim-colors-solarized')
     call dein#end()
     call dein#save_state()
 endif
@@ -121,7 +122,7 @@ syntax enable
 " Preferred settings:
 " - deseert for remote connection
 " =============================================================================
-:colorscheme molokai
+colorscheme desert
 
 " =============================================================================
 "                             Key binds for GNU global
