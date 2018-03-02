@@ -6,41 +6,45 @@ export PLATFORM="$MACHINE-$OS-$OSVERSION"
 
 # set PATH
 
-# Functions to add and remove paths
+# Functions to add and remove paths to a given environmental variable
+# example: pathadd [env-name] [path-to-add] (after)
+# Note that 'after' is optional. If 'after' is passed, the given path is put
+# at the end of the given environmental variable.
 pathadd() {
-    add_path="${1%/}"
-    if [[ -d "$1" && $(echo $PATH | grep -E -c "(^|:)$add_path($|:)") -eq 0 ]]; then
-        if [ "$2" = "after" ]; then
-            PATH="$PATH:$add_path"
+    envname=$1
+    eval envpath='$'$envname
+    newelement=${2%/}
+    # Clean-up a successive colons (:::::::...)
+    eval $envname="$(echo $envpath | sed -r -e 's;:{2,};:;g' -e 's;^:|:$;;g')"
+    # Add new path
+    if [[ -d "$2" && $(echo $envpath | grep -E -c "(^|:)$newelement($|:)") -eq 0 ]]; then
+        if [ "$3" == "after" ]; then
+            eval $envname="$envpath:$newelement"
         else
-            PATH="$add_path:$PATH"
+            eval $envname="$newelement:$envpath"
         fi
     fi
 }
 
-# Remove a given path
 pathrm() {
-    rm_path="${1%/}"
-    # PATH="$(echo $PATH | sed -e "s;\(^\|:\)${1%/}\(:\|\$\);\1\2;g" -e 's;^:\|:$;;g' -e 's;::;:;g')"
-    PATH="$(echo $PATH | sed -r -e "s;(^|:)$rm_path(:|$);\1\2;g" -e 's;^:|:$;;g' -e 's;::;:;g')"
+    envname=$1
+    eval envpath='$'$envname
+    eval $envname="$(echo $envpath | sed -e "s;\(^\|:\)${2%/}\(:\|\$\);\1\2;g" -e 's;^:\|:$;;g' -e 's;::;:;g')"
 }
 
-
 # home pc
-if [ "$(hostname)" = "kashima" ]; then
-    # PATH="$HOME/anaconda3/bin:$HOME/.local/bin:$PATH"
-    pathadd "$HOME/anaconda3/bin"
-    pathadd "$HOME/.local/bin"
+if [ "$(hostname)" == "kashima" ]; then
+    pathadd PATH "$HOME/anaconda3/bin"
+    pathadd PATH "$HOME/.local/bin"
 fi
 # UT pc
-if [ "$(hostname)" = "muse" ]; then
-    # PATH="$HOME/anaconda3/bin:$HOME/.local/src/minos-static/bin:$HOME/.local/bin:$HOME/Projects/gmsh/bin:$HOME/Projects/paraview/bin:$HOME/Projects/MATLAB/R2017a/bin:$PATH"
-    pathadd "$HOME/anaconda3/bin"
-    pathadd "$HOME/.local/src/minos-static/bin"
-    pathadd "$HOME/.local/bin"
-    pathadd "$HOME/Projects/gmsh/bin"
-    pathadd "$HOME/Projects/paraview/bin"
-    pathadd "$HOME/Projects/MATLAB/R2017a/bin"
+if [ "$(hostname)" == "muse" ]; then
+    pathadd PATH "$HOME/anaconda3/bin"
+    pathadd PATH "$HOME/.local/src/minos-static/bin"
+    pathadd PATH "$HOME/.local/bin"
+    pathadd PATH "$HOME/Projects/gmsh/bin"
+    pathadd PATH "$HOME/Projects/paraview/bin"
+    pathadd PATH "$HOME/Projects/MATLAB/R2017a/bin"
 fi
 
 # set PATH to shared libraries
