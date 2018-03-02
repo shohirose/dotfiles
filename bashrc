@@ -168,7 +168,7 @@ export COLOR_GRAY='\033[1;30m'
 export COLOR_LIGHT_GRAY='\033[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
-alias untar="tar -zxvf"
+alias untar="tar -zxf"
 
 # Powerline Shell settings
 result=$(pip list --format=columns | grep powerline-shell)
