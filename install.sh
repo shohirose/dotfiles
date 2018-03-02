@@ -33,8 +33,8 @@ else
     echo "installing autoconf"
     (\
         cd $tmp; \
-        wget https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz && \
-        tar -zxvf autoconf-2.69.tar.gz && \
+        wget https://ftpmirror.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz && \
+        tar -zxf autoconf-2.69.tar.gz && \
         cd autoconf-2.69 && \
         ./configure --prefix=${LOCAL_DIR} && \
         make && \
@@ -53,8 +53,8 @@ else
     echo "installing automake"
     (\
         cd $tmp; \
-        wget https://ftp.gnu.org/gnu/automake/automake-1.15.tar.gz
-        tar -zxvf automake-1.15.tar.gz && \
+        wget https://ftpmirror.gnu.org/gnu/automake/automake-1.15.tar.gz
+        tar -zxf automake-1.15.tar.gz && \
         cd automake-1.15 && \
         ./configure --prefix=${LOCAL_DIR} && \
         make && \
@@ -74,7 +74,7 @@ else
     (\
         cd $tmp; \
         wget https://cmake.org/files/v3.10/cmake-3.10.2.tar.gz
-        tar -zxvf cmake-3.10.2.tar.gz && \
+        tar -zxf cmake-3.10.2.tar.gz && \
         cd cmake-3.10.2 && \
         ./configure --prefix=${LOCAL_DIR} && \
         make && \
@@ -92,7 +92,6 @@ if [ $count != 0 ]; then
 else
     echo "powerline-shell not found"
     echo "installing powerline-shell..."
-    # pip install --user git+git://github.com/powerline/powerline
     pip install --user powerline-shell
     echo "installing powerline fonts..."
     (\
@@ -117,6 +116,7 @@ else
     echo "downloading minos-static..."
     cd $SRC_DIR
     git clone https://github.com/minos-org/minos-static.git
+    echo "adding ${MINOS_DIR}/bin to PATH and exporting PATH"
     export PATH="${MINOS_DIR}/bin:$PATH"
     echo "please add ${MINOS_DIR}/bin to PATH in bashrc or basrh_profile"
 fi
@@ -133,7 +133,7 @@ else
     echo "installing tmux using minos-static..."
     cd $MINOS_DIR
     ./static-get tmux
-    tar xvf tmux-1.9a.tar.xz
+    tar xf tmux-1.9a.tar.xz
 fi
 
 atexit
