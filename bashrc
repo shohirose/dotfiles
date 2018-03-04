@@ -178,7 +178,7 @@ if [ -n "$result" ]; then
         PS1="$(~/.local/bin/powerline-shell $?)"
     }
 
-    if [[ "$TERM" != "linux" && ! [$PROMPT_COMMAND =~ _update_ps1 ]]; then
+    if [[ "$TERM" != "linux" && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
         PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
     fi
 fi
