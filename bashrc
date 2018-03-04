@@ -136,10 +136,10 @@ then
     alias rm=trash-put
 fi
 
-# Set Paths
-# For .pc files
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/include/googletest/build
-export PKG_CONFIG_PATH
+# # Set Paths
+# # For .pc files
+# PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/include/googletest/build
+# export PKG_CONFIG_PATH
 
 # Alias
 alias ll='ls -l'
