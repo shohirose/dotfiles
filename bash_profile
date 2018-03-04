@@ -4,7 +4,9 @@ export OSVERSION=`uname -r`; OSVERSION=`expr "$OSVERSION" : '[^0-9]*\([0-9]*\.[0
 export MACHINE=`uname -m | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
 export PLATFORM="$MACHINE-$OS-$OSVERSION"
 
-# set PATH
+# ==============================================================================
+# Set paths
+# ==============================================================================
 
 # Functions to add and remove paths to a given environmental variable
 # example: pathadd [env-name] [path-to-add] (after)
