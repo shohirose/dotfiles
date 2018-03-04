@@ -111,15 +111,16 @@ fi
 # ==============================================================================
 # OpenFOAM settings
 # ==============================================================================
-# source $HOME/foam/foam-extend-3.2/etc/bashrc
-# source $HOME/foam/geo32/etc/bashrc
-
-# alias fe32='source $HOME/foam/foam-extend-3.2/etc/bashrc'
-# alias geo='cd $HOME/foam/geo32/'
-# alias gsrc='cd $HOME/foam/geo32/src'
-# alias gtut='cd $HOME/foam/geo32/tutorials'
-# alias fedebug='export WM_COMPILE_OPTION=Debug; source $HOME/.profile'
-# alias feopt='export WM_COMPILE_OPTION=Opt; source $HOME/.profile'
+if [ "$hostname" == "muse" ]; then
+    source $HOME/foam/foam-extend-3.2/etc/bashrc
+    source $HOME/foam/geo32/etc/bashrc
+    alias fe32='cd $HOME/foam/foam-extend-3.2/etc/bashrc'
+    alias geo='cd $HOME/foam/geo32/'
+    alias gsrc='cd $HOME/foam/geo32/src'
+    alias gtut='cd $HOME/foam/geo32/tutorials'
+    alias fedebug='export WM_COMPILE_OPTION=Debug; source $HOME/.bash_profile'
+    alias feopt='export WM_COMPILE_OPTION=Opt; source $HOME/.bash_profile'
+fi
 
 # ==============================================================================
 # Terminal settings
