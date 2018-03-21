@@ -111,15 +111,16 @@ fi
 # ==============================================================================
 # OpenFOAM settings
 # ==============================================================================
-# source $HOME/foam/foam-extend-3.2/etc/bashrc
-# source $HOME/foam/geo32/etc/bashrc
-
-# alias fe32='source $HOME/foam/foam-extend-3.2/etc/bashrc'
-# alias geo='cd $HOME/foam/geo32/'
-# alias gsrc='cd $HOME/foam/geo32/src'
-# alias gtut='cd $HOME/foam/geo32/tutorials'
-# alias fedebug='export WM_COMPILE_OPTION=Debug; source $HOME/.profile'
-# alias feopt='export WM_COMPILE_OPTION=Opt; source $HOME/.profile'
+if [ "$hostname" == "muse" ]; then
+    source $HOME/foam/foam-extend-3.2/etc/bashrc
+    source $HOME/foam/geo32/etc/bashrc
+    alias fe32='cd $HOME/foam/foam-extend-3.2/etc/bashrc'
+    alias geo='cd $HOME/foam/geo32/'
+    alias gsrc='cd $HOME/foam/geo32/src'
+    alias gtut='cd $HOME/foam/geo32/tutorials'
+    alias fedebug='export WM_COMPILE_OPTION=Debug; source $HOME/.bash_profile'
+    alias feopt='export WM_COMPILE_OPTION=Opt; source $HOME/.bash_profile'
+fi
 
 # ==============================================================================
 # Terminal settings
@@ -135,10 +136,10 @@ then
     alias rm=trash-put
 fi
 
-# Set Paths
-# For .pc files
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/include/googletest/build
-export PKG_CONFIG_PATH
+# # Set Paths
+# # For .pc files
+# PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/include/googletest/build
+# export PKG_CONFIG_PATH
 
 # Alias
 alias ll='ls -l'
@@ -177,7 +178,7 @@ if [ -n "$result" ]; then
         PS1="$(~/.local/bin/powerline-shell $?)"
     }
 
-    if [[ "$TERM" != "linux" && ! [$PROMPT_COMMAND =~ _update_ps1 ]]; then
+    if [[ "$TERM" != "linux" && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
         PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
     fi
 fi
