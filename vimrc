@@ -191,6 +191,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Compiler specification
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+" Find a custom config file for each project
+let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
+
 "------------------------------------------------------------------------------
 " NERD Commenter
 " filetype plugin on
