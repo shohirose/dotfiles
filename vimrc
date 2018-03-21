@@ -195,12 +195,6 @@ let g:syntastic_python_checkers=['python','flake8']
 let g:syntastic_python_flake8_args='--ignore=E501,F401,E128,F841,F821,E114,E116'
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11'
-
-" Compiler specification
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-
-" Find a custom config file for each project
 let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
 
 "------------------------------------------------------------------------------
