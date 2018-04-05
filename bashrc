@@ -112,8 +112,8 @@ fi
 # OpenFOAM settings
 # ==============================================================================
 if [[ $(hostname) == "muse" ]]; then
-    source $HOME/foam/foam-extend-3.2/etc/bashrc
-    source $HOME/foam/geo32/etc/bashrc
+    # source $HOME/foam/foam-extend-3.2/etc/bashrc
+    # source $HOME/foam/geo32/etc/bashrc
     alias fe32='cd $HOME/foam/foam-extend-3.2/etc/bashrc'
     alias geo='cd $HOME/foam/geo32/'
     alias gsrc='cd $HOME/foam/geo32/src'
