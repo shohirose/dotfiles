@@ -102,6 +102,7 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('scrooloose/nerdcommenter')
     call dein#add('kannokanno/previm')
     call dein#add('altercation/vim-colors-solarized')
+    call dein#add('justmao945/vim-clang')
     call dein#end()
     call dein#save_state()
 endif
@@ -197,6 +198,16 @@ let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11'
 let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
 let g:syntastic_cpp_include_dirs = [ '/home/sho/.local/include', '/home/sho/.local/include/vtk-8.1' ]
+
+"------------------------------------------------------------------------------
+" Settings for vim-clang
+if hostname() == 'kashima'
+    let g:clang_c_options='-std=c11'
+    let g:clang_cpp_options='-std=c++11 -pedantic-errors'
+    let g:clang_format_auto=1
+    let g:clang_format_style='Google'
+    let g:clang_check_syntax_auto=1
+endif
 
 "------------------------------------------------------------------------------
 " NERD Commenter
