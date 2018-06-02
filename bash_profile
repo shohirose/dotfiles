@@ -38,6 +38,7 @@ pathrm() {
 if [ "$(hostname)" == "kashima" ]; then
     pathadd PATH "$HOME/anaconda3/bin"
     pathadd PATH "$HOME/.local/bin"
+    pathadd PATH "$HOME/ThirdParty/ParaView/bin"
 fi
 # UT pc
 if [ "$(hostname)" == "muse" ]; then
