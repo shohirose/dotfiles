@@ -201,13 +201,11 @@ let g:syntastic_cpp_include_dirs = [ '/home/sho/.local/include', '/home/sho/.loc
 
 "------------------------------------------------------------------------------
 " Settings for vim-clang
-if hostname() == 'kashima'
-    let g:clang_c_options='-std=c11'
-    let g:clang_cpp_options='-std=c++11 -pedantic-errors'
-    let g:clang_format_auto=1
-    let g:clang_format_style='Google'
-    let g:clang_check_syntax_auto=1
-endif
+let g:clang_c_options='-std=c11'
+let g:clang_cpp_options='-std=c++11 -pedantic-errors'
+let g:clang_format_auto=1
+let g:clang_format_style='Google'
+let g:clang_check_syntax_auto=1
 
 "------------------------------------------------------------------------------
 " NERD Commenter
