@@ -39,6 +39,7 @@ if [ "$(hostname)" == "kashima" ]; then
     pathadd PATH "$HOME/anaconda3/bin"
     pathadd PATH "$HOME/.local/bin"
     pathadd PATH "$HOME/ThirdParty/ParaView/bin"
+    pathadd PATH "$HOME/Projects/cmake/bin"
 fi
 # UT pc
 if [ "$(hostname)" == "muse" ]; then
