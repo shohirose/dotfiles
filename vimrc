@@ -1,7 +1,7 @@
 " Input settings
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set softtabstop=0
 set shiftround
 set infercase
@@ -98,11 +98,12 @@ if dein#load_state('~/.vim/repos/github.com/')
     " Text manipulation (move, duplicate, ...)
     " call dein#add('t9md/vim-textmanip')
     call dein#add('ConradIrwin/vim-bracketed-paste')
-    call dein#add('vim-syntastic/syntastic')
+    " call dein#add('vim-syntastic/syntastic')
     call dein#add('scrooloose/nerdcommenter')
     call dein#add('kannokanno/previm')
     call dein#add('altercation/vim-colors-solarized')
-    call dein#add('justmao945/vim-clang')
+    " call dein#add('justmao945/vim-clang')
+    call dein#add('rhysd/vim-clang-format')
     call dein#end()
     call dein#save_state()
 endif
@@ -183,29 +184,47 @@ augroup END
 
 "------------------------------------------------------------------------------
 " Recommended settings for vim-syntastic for begginers
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec='python'
-let g:syntastic_python_checkers=['python','flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,F401,E128,F841,F821,E114,E116'
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = '-std=c++11'
-let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
-let g:syntastic_cpp_include_dirs = [ '/home/sho/.local/include', '/home/sho/.local/include/vtk-8.1' ]
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_python_exec='python'
+" let g:syntastic_python_checkers=['python','flake8']
+" let g:syntastic_python_flake8_args='--ignore=E501,F401,E128,F841,F821,E114,E116'
+" let g:syntastic_cpp_compiler = 'g++'
+" let g:syntastic_cpp_compiler_options = '-std=c++11'
+" let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
+" let g:syntastic_cpp_include_dirs = [ '/home/sho/.local/include', '/home/sho/.local/include/vtk-8.1' ]
 
 "------------------------------------------------------------------------------
 " Settings for vim-clang
-let g:clang_c_options='-std=c11'
-let g:clang_cpp_options='-std=c++11 -pedantic-errors'
-let g:clang_format_auto=1
-let g:clang_format_style='Google'
-let g:clang_check_syntax_auto=1
+" let g:clang_c_options='-std=c14'
+" let g:clang_cpp_options='-std=c++14 -pedantic-errors'
+" let g:clang_format_auto=1
+" let g:clang_format_style='Google'
+" let g:clang_check_syntax_auto=1
+
+"------------------------------------------------------------------------------
+" Settings for vim-clang-format
+let g:clang_format#code_style = "google"
+let g:clang_format#style_options = {
+      \ "AllowShortIfStatementsOnASingleLine" : "true",
+      \ "AlwaysBreakTemplateDeclarations" : "true",
+      \ "Standard" : "C++11",
+      \ "AlignConsecutiveAssignments" : "true",
+      \ "AlignTrailingComments" : "true" }
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
+" Auto-dnabling auto-formatting
+autocmd FileType cpp ClangFormatAutoEnable
+
+" map to <Leader>cf (\cf)
+autocmd FileType cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType cpp nnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 "------------------------------------------------------------------------------
 " NERD Commenter
