@@ -49,6 +49,7 @@ if [ "$(hostname)" == "muse" ]; then
     pathadd PATH "$HOME/Projects/gmsh/bin"
     pathadd PATH "$HOME/Projects/paraview/bin"
     pathadd PATH "$HOME/Projects/MATLAB/R2017a/bin"
+    pathadd PATH "$HOME/Projects/cmake/bin"
     pathadd PATH "$HOME/.local/texlive/2017/bin/x86_64-linux"
     pathadd MANPATH "$HOME/.local/texlive/2017/texmf-dist/doc/man"
     pathadd INFOPATH "$HOME/.local/texlive/2017/texmf-dist/doc/info"
