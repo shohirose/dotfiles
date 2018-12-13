@@ -209,12 +209,8 @@ fi
 # UT pc
 if [ "$(hostname)" == "muse" ]; then
     pathadd PATH "$HOME/anaconda3/bin"
-    pathadd PATH "$HOME/.local/src/minos-static/bin"
     pathadd PATH "$HOME/.local/bin"
-    pathadd PATH "$HOME/Projects/gmsh/bin"
-    pathadd PATH "$HOME/Projects/paraview/bin"
     pathadd PATH "$HOME/Projects/MATLAB/R2017a/bin"
-    pathadd PATH "$HOME/Projects/cmake/bin"
     pathadd PATH "$HOME/.local/texlive/2017/bin/x86_64-linux"
     pathadd MANPATH "$HOME/.local/texlive/2017/texmf-dist/doc/man"
     pathadd INFOPATH "$HOME/.local/texlive/2017/texmf-dist/doc/info"
@@ -235,8 +231,3 @@ if [ -n "$result" ]; then
 fi
 
 export LS_COLORS='di=01;35'
-
-export EIGEN_INCLUDE_DIR="$HOME/.local/include"
-export JSON_INCLUDE_DIR="$HOME/.local/include"
-export GSL_INCLUDE_DIR="$HOME/.local/include"
-export GTEST_ROOT="$HOME/.local"
