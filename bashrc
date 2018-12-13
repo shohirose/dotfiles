@@ -235,3 +235,8 @@ if [ -n "$result" ]; then
 fi
 
 export LS_COLORS='di=01;35'
+
+export EIGEN_INCLUDE_DIR="$HOME/.local/include"
+export JSON_INCLUDE_DIR="$HOME/.local/include"
+export GSL_INCLUDE_DIR="$HOME/.local/include"
+export GTEST_ROOT="$HOME/.local"
