@@ -80,11 +80,13 @@ if dein#load_state('~/.vim/repos/github.com/')
     call dein#add('Shougo/dein.vim')
     call dein#add('Shougo/unite.vim')
     call dein#add('Shougo/neocomplete.vim')
+    call dein#add('Shougo/vimfiler.vim')
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('Shougo/neosnippet-snippets')
     call dein#add('nathanaelkane/vim-indent-guides')
     call dein#add('vim-scripts/Align')
     " Replace double quote with single quote, etc...
     call dein#add('vim-scripts/surround.vim')
-    call dein#add('Shougo/vimfiler.vim')
     call dein#add('vim-scripts/trailing-whitespace')
     call dein#add('vim-scripts/Cpp11-Syntax-Support')
     " Execute git from vim
@@ -292,3 +294,29 @@ noremap <S-b> <C-b>
 " =: indent
 " G: go to the end of the file
 noremap == gg=G''
+
+" ==============================================================================
+" neosnippets
+" ==============================================================================
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+"set snippet file dir
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
